@@ -18,10 +18,10 @@ class CalculatorService
 
     public function divide(int $a, int $b): float
     {
-        if ($b === 0) {
+        if (0 === $b) {
             throw new \InvalidArgumentException('Division by zero is not allowed');
         }
-        
+
         return $a / $b;
     }
 }

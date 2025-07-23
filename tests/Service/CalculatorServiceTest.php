@@ -38,7 +38,7 @@ class CalculatorServiceTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Division by zero is not allowed');
-        
+
         $this->calculator->divide(10, 0);
     }
 }
