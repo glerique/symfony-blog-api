@@ -1,0 +1,8 @@
+vendor/
+var/cache/
+var/log/
+.git/
+.idea/
+node_modules/
+.env.local
+.env.*.local

@@ -1,0 +1,35 @@
+# Fichiers et dossiers Symfony
+/var/
+/vendor/
+# dotenv configuration and secrets
+/.env
+.env.local
+.env.*.local
+.env.docker
+/.idea/
+/node_modules/
+/public/build/
+/public/bundles/
+
+# Fichiers système
+.DS_Store
+
+# Logs
+*.log
+
+# Tests
+/phpunit.xml
+/phpunit.xml.dist
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###
