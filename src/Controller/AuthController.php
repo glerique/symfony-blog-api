@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
+use OpenApi\Attributes as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use OpenApi\Attributes as OA;
 
 class AuthController extends AbstractController
 {
@@ -13,7 +13,7 @@ class AuthController extends AbstractController
     #[OA\Post]
     #[OA\RequestBody(content: new OA\JsonContent(properties: [
         new OA\Property('email', type: 'string', example: 'user@example.com'),
-        new OA\Property('password', type: 'string', example: 'password123')
+        new OA\Property('password', type: 'string', example: 'password123'),
     ]))]
     public function login(): JsonResponse
     {
@@ -26,17 +26,17 @@ class AuthController extends AbstractController
     {
         /** @var \App\Entity\User|null $user */
         $user = $this->getUser();
-        
+
         if (!$user) {
             return $this->json(['message' => 'User not found'], 404);
         }
-        
+
         return $this->json([
             'user' => [
                 'id' => $user->getId(),
                 'email' => $user->getEmail(),
-                'roles' => $user->getRoles()
-            ]
+                'roles' => $user->getRoles(),
+            ],
         ]);
     }
 }

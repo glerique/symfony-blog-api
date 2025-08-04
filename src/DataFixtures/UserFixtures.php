@@ -10,7 +10,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserFixtures extends Fixture
 {
     public function __construct(
-        private UserPasswordHasherInterface $passwordHasher
+        private UserPasswordHasherInterface $passwordHasher,
     ) {
     }
 
@@ -33,7 +33,7 @@ class UserFixtures extends Fixture
         $manager->persist($user);
 
         // Création d'utilisateurs de test supplémentaires
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 5; ++$i) {
             $testUser = new User();
             $testUser->setEmail("test{$i}@example.com");
             $testUser->setRoles(['ROLE_USER']);

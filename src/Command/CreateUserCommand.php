@@ -20,7 +20,7 @@ class CreateUserCommand extends Command
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private UserPasswordHasherInterface $passwordHasher
+        private UserPasswordHasherInterface $passwordHasher,
     ) {
         parent::__construct();
     }
@@ -43,6 +43,7 @@ class CreateUserCommand extends Command
         $existingUser = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
         if ($existingUser) {
             $io->error(sprintf('User with email "%s" already exists!', $email));
+
             return Command::FAILURE;
         }
 
@@ -50,7 +51,7 @@ class CreateUserCommand extends Command
         $user = new User();
         $user->setEmail($email);
         $user->setRoles(['ROLE_USER']);
-        
+
         // Hash the password
         $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
         $user->setPassword($hashedPassword);

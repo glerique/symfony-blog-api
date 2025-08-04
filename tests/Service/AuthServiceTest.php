@@ -17,7 +17,7 @@ class AuthServiceTest extends TestCase
     public function testServiceIsWorking(): void
     {
         $result = $this->authService->test();
-        
+
         $this->assertEquals('AuthService is working!', $result);
         $this->assertIsString($result);
     }
