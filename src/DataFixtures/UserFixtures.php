@@ -20,7 +20,7 @@ class UserFixtures extends Fixture
         $admin = new User();
         $admin->setEmail('admin@example.com');
         $admin->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
-        $hashedPassword = $this->passwordHasher->hashPassword($admin, 'admin123');
+        $hashedPassword = $this->passwordHasher->hashPassword($admin, $_ENV['ADMIN_PASSWORD'] ?? 'admin123');
         $admin->setPassword($hashedPassword);
         $manager->persist($admin);
 
@@ -28,7 +28,7 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setEmail('user@example.com');
         $user->setRoles(['ROLE_USER']);
-        $hashedPassword = $this->passwordHasher->hashPassword($user, 'password123');
+        $hashedPassword = $this->passwordHasher->hashPassword($user, $_ENV['USER_PASSWORD'] ?? 'password123');
         $user->setPassword($hashedPassword);
         $manager->persist($user);
 
@@ -37,7 +37,7 @@ class UserFixtures extends Fixture
             $testUser = new User();
             $testUser->setEmail("test{$i}@example.com");
             $testUser->setRoles(['ROLE_USER']);
-            $hashedPassword = $this->passwordHasher->hashPassword($testUser, 'test123');
+            $hashedPassword = $this->passwordHasher->hashPassword($testUser, $_ENV['TEST_PASSWORD'] ?? 'test123');
             $testUser->setPassword($hashedPassword);
             $manager->persist($testUser);
         }
@@ -46,7 +46,7 @@ class UserFixtures extends Fixture
         $author = new User();
         $author->setEmail('author@example.com');
         $author->setRoles(['ROLE_AUTHOR', 'ROLE_USER']);
-        $hashedPassword = $this->passwordHasher->hashPassword($author, 'author123');
+        $hashedPassword = $this->passwordHasher->hashPassword($author, $_ENV['AUTHOR_PASSWORD'] ?? 'author123');
         $author->setPassword($hashedPassword);
         $manager->persist($author);
 
