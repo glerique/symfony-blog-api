@@ -31,7 +31,8 @@
         "symfony/css-selector": "^7.3",
         "symfony/phpunit-bridge": "^7.3",
         "symfony/maker-bundle": "^1.64",
-        "doctrine/doctrine-fixtures-bundle": "^4.1"
+        "doctrine/doctrine-fixtures-bundle": "^4.1",
+        "fakerphp/faker": "^1.24"
     },
     "autoload": {
         "psr-4": {
