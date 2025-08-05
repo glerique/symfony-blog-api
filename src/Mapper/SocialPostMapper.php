@@ -2,6 +2,7 @@
 
 namespace App\Mapper;
 
+use App\Dto\UserDto;
 use App\Dto\SocialPostDto;
 use App\Entity\SocialPost;
 
@@ -9,12 +10,21 @@ class SocialPostMapper
 {
     public function entityToDto(SocialPost $entity): SocialPostDto
     {
+        $authorDto = null;
+        if ($entity->getAuthor()) {
+            $authorDto = new UserDto(
+                $entity->getAuthor()->getId(),
+                $entity->getAuthor()->getEmail()
+            );
+        }
+        
         return new SocialPostDto(
             $entity->getId(),
             $entity->getTitle() ?? '',
             $entity->getContent() ?? '',
             $entity->getCreatedAt()?->format(\DateTime::ATOM) ?? '',
-            $entity->isPublished()
+            $entity->isPublished(),
+            $authorDto // Ajout du paramètre author manquant
         );
     }
 
