@@ -16,6 +16,9 @@ class SocialPostRepository extends ServiceEntityRepository
         parent::__construct($registry, SocialPost::class);
     }
 
+    /**
+     * @return SocialPost[]
+     */
     public function findPublished(): array
     {
         return $this->createQueryBuilder('sp')

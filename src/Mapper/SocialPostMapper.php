@@ -11,9 +11,9 @@ class SocialPostMapper
     {
         return new SocialPostDto(
             $entity->getId(),
-            $entity->getTitle(),
-            $entity->getContent(),
-            $entity->getCreatedAt()->format(\DateTime::ATOM),
+            $entity->getTitle() ?? '',
+            $entity->getContent() ?? '',
+            $entity->getCreatedAt()?->format(\DateTime::ATOM) ?? '',
             $entity->isPublished()
         );
     }
@@ -24,7 +24,9 @@ class SocialPostMapper
         $entity->setTitle($dto->title);
         $entity->setContent($dto->content);
         $entity->setCreatedAt(new \DateTimeImmutable($dto->createdAt));
-        $entity->setIsPublished($dto->isPublished);
+        if ($dto->isPublished !== null) {
+            $entity->setIsPublished($dto->isPublished);
+        }
 
         return $entity;
     }
