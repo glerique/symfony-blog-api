@@ -24,6 +24,7 @@ class SocialPostMapper
         $entity->setTitle($dto->title);
         $entity->setContent($dto->content);
         $entity->setCreatedAt(new \DateTimeImmutable($dto->createdAt));
+        $entity->setIsPublished($dto->isPublished);
 
         return $entity;
     }
