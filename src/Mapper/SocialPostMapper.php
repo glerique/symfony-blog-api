@@ -17,7 +17,7 @@ class SocialPostMapper
                 $entity->getAuthor()->getEmail() ?? ''
             );
         }
-        
+
         return new SocialPostDto(
             $entity->getId(),
             $entity->getTitle() ?? '',

@@ -2,8 +2,6 @@
 
 namespace App\Dto;
 
-use App\Dto\AuthorDto;
-
 class SocialPostDto
 {
     public ?int $id = null;
@@ -11,7 +9,7 @@ class SocialPostDto
     public string $content;
     public string $createdAt;
     public ?bool $isPublished = null;
-    public ?AuthorDto $author = null; 
+    public ?AuthorDto $author = null;
 
     public function __construct(?int $id, string $title, string $content, string $createdAt, ?bool $isPublished = null, ?AuthorDto $author = null)
     {
