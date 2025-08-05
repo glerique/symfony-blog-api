@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -26,17 +24,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string')]
     private string $password;
-
-    /**
-     * @var Collection<int, SocialPost>
-     */
-    #[ORM\OneToMany(targetEntity: SocialPost::class, mappedBy: 'author')]
-    private Collection $socialPosts;
-
-    public function __construct()
-    {
-        $this->socialPosts = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -102,35 +89,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
-    }
-
-    /**
-     * @return Collection<int, SocialPost>
-     */
-    public function getSocialPosts(): Collection
-    {
-        return $this->socialPosts;
-    }
-
-    public function addSocialPost(SocialPost $socialPost): static
-    {
-        if (!$this->socialPosts->contains($socialPost)) {
-            $this->socialPosts->add($socialPost);
-            $socialPost->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSocialPost(SocialPost $socialPost): static
-    {
-        if ($this->socialPosts->removeElement($socialPost)) {
-            // set the owning side to null (unless already changed)
-            if ($socialPost->getAuthor() === $this) {
-                $socialPost->setAuthor(null);
-            }
-        }
-
-        return $this;
     }
 }
