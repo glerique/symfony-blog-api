@@ -8,9 +8,9 @@ class SocialPostDto
     public string $title;
     public string $content;
     public string $createdAt;
-    public ?bool $isPublished = null; 
+    public ?bool $isPublished = null;
 
-    public function __construct(?int $id, string $title, string $content, string $createdAt, ?bool $isPublished = null  )
+    public function __construct(?int $id, string $title, string $content, string $createdAt, ?bool $isPublished = null)
     {
         $this->id = $id;
         $this->title = $title;

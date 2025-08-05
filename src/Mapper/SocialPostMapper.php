@@ -2,8 +2,8 @@
 
 namespace App\Mapper;
 
-use App\Entity\SocialPost;
 use App\Dto\SocialPostDto;
+use App\Entity\SocialPost;
 
 class SocialPostMapper
 {
@@ -24,7 +24,7 @@ class SocialPostMapper
         $entity->setTitle($dto->title);
         $entity->setContent($dto->content);
         $entity->setCreatedAt(new \DateTimeImmutable($dto->createdAt));
-        if ($dto->isPublished !== null) {
+        if (null !== $dto->isPublished) {
             $entity->setIsPublished($dto->isPublished);
         }
 
