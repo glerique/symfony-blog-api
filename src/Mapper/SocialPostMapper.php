@@ -2,7 +2,7 @@
 
 namespace App\Mapper;
 
-use App\Dto\UserDto;
+use App\Dto\AuthorDto;
 use App\Dto\SocialPostDto;
 use App\Entity\SocialPost;
 
@@ -12,9 +12,9 @@ class SocialPostMapper
     {
         $authorDto = null;
         if ($entity->getAuthor()) {
-            $authorDto = new UserDto(
+            $authorDto = new AuthorDto(
                 $entity->getAuthor()->getId(),
-                $entity->getAuthor()->getEmail()
+                $entity->getAuthor()->getEmail() ?? ''
             );
         }
         

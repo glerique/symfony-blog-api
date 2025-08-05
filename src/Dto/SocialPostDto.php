@@ -2,7 +2,7 @@
 
 namespace App\Dto;
 
-use App\Dto\UserDto;
+use App\Dto\AuthorDto;
 
 class SocialPostDto
 {
@@ -11,9 +11,9 @@ class SocialPostDto
     public string $content;
     public string $createdAt;
     public ?bool $isPublished = null;
-    public ?UserDto $author = null; 
+    public ?AuthorDto $author = null; 
 
-    public function __construct(?int $id, string $title, string $content, string $createdAt, ?bool $isPublished = null, ?UserDto $author = null)
+    public function __construct(?int $id, string $title, string $content, string $createdAt, ?bool $isPublished = null, ?AuthorDto $author = null)
     {
         $this->id = $id;
         $this->title = $title;
