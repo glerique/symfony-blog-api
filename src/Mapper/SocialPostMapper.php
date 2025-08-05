@@ -24,7 +24,7 @@ class SocialPostMapper
             $entity->getContent() ?? '',
             $entity->getCreatedAt()?->format(\DateTime::ATOM) ?? '',
             $entity->isPublished(),
-            $authorDto // Ajout du paramètre author manquant
+            $authorDto
         );
     }
 
