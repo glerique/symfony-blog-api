@@ -2,6 +2,8 @@
 
 namespace App\Dto;
 
+use App\Dto\UserDto;
+
 class SocialPostDto
 {
     public ?int $id = null;
@@ -9,13 +11,15 @@ class SocialPostDto
     public string $content;
     public string $createdAt;
     public ?bool $isPublished = null;
+    public ?UserDto $author = null; 
 
-    public function __construct(?int $id, string $title, string $content, string $createdAt, ?bool $isPublished = null)
+    public function __construct(?int $id, string $title, string $content, string $createdAt, ?bool $isPublished = null, ?UserDto $author = null)
     {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
         $this->createdAt = $createdAt;
         $this->isPublished = $isPublished;
+        $this->author = $author;
     }
 }
